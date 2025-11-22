@@ -96,6 +96,7 @@
   programs.firefox.enable = true;
 
   # Allow unfree packages
+
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
@@ -103,8 +104,10 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     	wget
-	pkgs.vesktop
-	pkgs.git
+	vesktop
+	git
+	wezterm
+	
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -134,4 +137,5 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
+ 
 }
