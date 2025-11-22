@@ -107,6 +107,7 @@
 	vesktop
 	git
 	wezterm
+	nerd-fonts-meslo-lg
 	
   ];
 
