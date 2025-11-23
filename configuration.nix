@@ -110,7 +110,7 @@
 	
 
 	#Media 
-	deezer-enhanced #pas officiel
+	
 	
 	#Outil 
 	wget
