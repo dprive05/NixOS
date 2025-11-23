@@ -103,12 +103,22 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    	wget
-	vesktop
-	git
+	
+	#Logiciel Licence 
 	wezterm
 	meslo-lgs-nf
 	
+
+	#Media 
+	deezer-enhanced #pas officiel
+	
+	#Outil 
+	wget
+	git
+	tree
+
+	#Jeux	
+	modrinth-app #luncher mod minecraft 
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
