@@ -7,6 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      <nixos-hardware/framework/16-inch/7040-amd>
       ./hardware-configuration.nix
     ];
 
@@ -96,8 +97,13 @@
   programs.firefox.enable = true;
 
   # Allow unfree packages
-
   nixpkgs.config.allowUnfree = true;
+
+  #Add framework hardware module
+  services.fwupd.enable = true;
+
+  #Pour eviter les problème de couleur d´écran
+  boot.kernelParams = [ "amdgpu.abmlevel=0" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -105,11 +111,12 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
 	
 	#Logiciel Licence 
-	wezterm
-	meslo-lgs-nf
+	
+	
 	
 
-	#Media 
+	#Perso
+	bambu-studio
 	
 	
 	#Outil 
@@ -118,7 +125,13 @@
 	tree
 
 	#Jeux	
-	modrinth-app #luncher mod minecraft 
+	modrinth-app #luncher mod minecraft
+
+
+	#Terminal
+	kitty
+	wezterm
+	meslo-lgs-nf 
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

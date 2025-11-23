@@ -14,3 +14,9 @@ Pour revenir a la derniere version sur github
 ```sh
 git restore .
 ```
+
+Pour mettre à jour les drives :
+```
+$ fwupdmgr refresh
+$ fwupdmgr update
+```
