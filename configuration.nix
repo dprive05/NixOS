@@ -119,32 +119,17 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-	
-	#Logiciel Licence 
+
 	#virtualbox	
 	slack	
 	microsoft-edge
-	
-
-
-	#Perso
 	bambu-studio
-	
-	
-	#Outil 
 	wget
 	git
 	tree
-
-	#Jeux	
-	modrinth-app #luncher mod minecraft
+	modrinth-app
 	vesktop
-
-	#Terminal
-	kitty
-	wezterm
-	meslo-lgs-nf 
+	kitty 
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -175,6 +160,7 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
   
+  #Setup bluetooth setting 
   hardware.bluetooth = {
   enable = true;
   powerOnBoot = true;
