@@ -119,7 +119,7 @@
 	
 	#Logiciel Licence 
 	#virtualbox	
-	
+	slack	
 	
 
 	#Perso
