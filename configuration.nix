@@ -105,13 +105,20 @@
   #Pour eviter les problème de couleur d´écran
   boot.kernelParams = [ "amdgpu.abmlevel=0" ];
 
+  #Setup VirtualBox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "raph" ];
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  #virtualisation.virtualbox.guest.enable = true;   #Guest si nixos est une VM est non l'host
+  #virtualisation.virtualbox.guest.dragAndDrop = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
 	
 	#Logiciel Licence 
-	
+	#virtualbox	
 	
 	
 
@@ -126,7 +133,7 @@
 
 	#Jeux	
 	modrinth-app #luncher mod minecraft
-
+	vesktop
 
 	#Terminal
 	kitty
