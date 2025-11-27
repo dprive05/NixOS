@@ -112,6 +112,10 @@
   #virtualisation.virtualbox.guest.enable = true;   #Guest si nixos est une VM est non l'host
   #virtualisation.virtualbox.guest.dragAndDrop = true;
 
+  #Setup Flake
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -121,6 +125,8 @@
 	#virtualbox	
 	slack	
 	microsoft-edge
+	
+
 
 	#Perso
 	bambu-studio
