@@ -120,7 +120,7 @@
 	#Logiciel Licence 
 	#virtualbox	
 	slack	
-	
+	microsoft-edge
 
 	#Perso
 	bambu-studio
