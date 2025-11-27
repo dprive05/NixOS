@@ -4,9 +4,17 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, zen-browser, nixvim, ... }@inputs:
+  outputs = 
+	{ 
+	  self,
+	  nixpkgs, 
+	  zen-browser, 
+          nixos-hardware,
+	   ... 
+	}@inputs:
     let
  
       externalPackages = { system }: {

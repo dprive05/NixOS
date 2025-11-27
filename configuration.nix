@@ -2,12 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, external, ... }:
+{ config, pkgs, external, inputs, lib, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
-      <nixos-hardware/framework/16-inch/7040-amd>
+      (inputs.nixos-hardware + "/framework/16-inch/7040-amd/default.nix")
       ./hardware-configuration.nix
     ];
 
@@ -127,7 +127,6 @@
 	wget
 	git
 	tree
-	modrinth-app
 	vesktop
 	zen-browser
 	kitty 
