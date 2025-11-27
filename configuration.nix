@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, external, ... }:
 
 {
   imports =
@@ -118,7 +118,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; with external; [
 
 	#virtualbox	
 	slack	
@@ -129,9 +129,11 @@
 	tree
 	modrinth-app
 	vesktop
+	zen-browser
 	kitty 
   ];
 
+	
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

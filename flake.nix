@@ -1,18 +1,38 @@
 {
-  description = "A simple NixOS flake";
+  description = "Configuration NixOS";
 
   inputs = {
-    # NixOS official package source, using the nixos-25.05 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, zen-browser, nixvim, ... }@inputs:
+    let
+ 
+      externalPackages = { system }: {
+        # mon-logiciel = inputs.mon-logiciel.packages.${system}.default;
+        zen-browser = zen-browser.packages.${system}.default;
+        
+       
+      };
 
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      modules = [
+    in
+    {
+      nixosConfigurations = {
 
-        ./configuration.nix
-      ];
+        "nixos" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          
+          modules = [
+            ./configuration.nix
+          ];
+          
+          
+          specialArgs = {
+             inherit inputs;
+             external = externalPackages { system = "x86_64-linux"; };
+          };
+        };
+      };
     };
-  };
 }
