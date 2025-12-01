@@ -150,6 +150,7 @@
     	#Gestion du réseau/son en graphique 
     	networkmanagerapplet
     	pavucontrol   # Contrôle du volume audio
+	blueman	      #service de bluetooth
   ];
 
   fonts.packages = with pkgs; [
@@ -209,5 +210,6 @@
     };
   };
 
+  services.blueman.enable = true;
  
 }
