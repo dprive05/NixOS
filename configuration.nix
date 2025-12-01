@@ -145,7 +145,8 @@
     	wofi          # Le menu d'applications
     	rofi	      # Alternative à Wofi 
     	hyprpaper     # Pour gérer le fond d'écran
-    
+	brightnessctl #Pour les raccourcie clavier    
+
     	#Gestion du réseau/son en graphique 
     	networkmanagerapplet
     	pavucontrol   # Contrôle du volume audio
