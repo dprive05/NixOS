@@ -93,6 +93,7 @@
     ];
   };
 
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -115,6 +116,12 @@
   #Setup Flake
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  #Activer Hyprland
+  programs.hyprland.enable = true;
+  
+  #Optionnel : aide pour que les fenêtres comme Electron (Discord/VSCode) marchent bien sur Wayland
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -130,6 +137,23 @@
 	vesktop
 	zen-browser
 	kitty 
+
+	#Outils système pour Hyprland
+    	waybar        # La barre d'état / dock
+    	dunst         # Pour les notifications
+    	libnotify     # Dépendance pour les notifs
+    	wofi          # Le menu d'applications
+    	rofi	      # Alternative à Wofi 
+    	hyprpaper     # Pour gérer le fond d'écran
+    
+    	#Gestion du réseau/son en graphique 
+    	networkmanagerapplet
+    	pavucontrol   # Contrôle du volume audio
+  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
   ];
 
 	
