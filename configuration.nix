@@ -146,6 +146,7 @@
     	rofi	      # Alternative à Wofi 
     	hyprpaper     # Pour gérer le fond d'écran
 	brightnessctl #Pour les raccourcie clavier    
+	waypaper      #Gerer les ecrans	
 
     	#Gestion du réseau/son en graphique 
     	networkmanagerapplet
