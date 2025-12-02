@@ -156,6 +156,7 @@
 	waypaper      #Gerer les fond ecrans
 	nwg-displays  #Gerer les ecrans	
 	hypridle      #Gere la veille et l'inactivite	
+	swayosd	
 
     	#Gestion du réseau/son en graphique 
     	networkmanagerapplet
