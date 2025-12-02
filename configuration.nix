@@ -106,6 +106,10 @@
   #Pour eviter les problème de couleur d´écran
   boot.kernelParams = [ "amdgpu.abmlevel=0" ];
 
+  # On laisse Hyprland gérer le capot à 100%
+  services.logind.lidSwitch = "suspend";
+  services.logind.lidSwitchExternalPower = "ignore";
+
   #Setup VirtualBox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "raph" ];
@@ -119,6 +123,9 @@
   #Activer Hyprland
   programs.hyprland.enable = true;
   
+  #Active Hyprlock
+  programs.hyprlock.enable = true;
+
   #Optionnel : aide pour que les fenêtres comme Electron (Discord/VSCode) marchent bien sur Wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -148,6 +155,7 @@
 	brightnessctl #Pour les raccourcie clavier    
 	waypaper      #Gerer les fond ecrans
 	nwg-displays  #Gerer les ecrans	
+	hypridle      #Gere la veille et l'inactivite	
 
     	#Gestion du réseau/son en graphique 
     	networkmanagerapplet
