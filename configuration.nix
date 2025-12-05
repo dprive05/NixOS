@@ -137,6 +137,17 @@
   # Dire à SDDM de déverrouiller le coffre quand tu tapes ton mot de passe au login
   security.pam.services.sddm.enableGnomeKeyring = true;
 
+  #Raph ne me tue pas STP pour ce qu'il y a si dessous
+  # Activer Flatpak (pour Bambu Studio et autres apps propriétaires)
+  services.flatpak.enable = true;
+  
+  # Indispensable pour que les Flatpaks puissent ouvrir les fenêtres "Enregistrer sous..." sur Hyprland
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; with external; [
@@ -144,13 +155,13 @@
 	#virtualbox	
 	slack	
 	microsoft-edge
-	bambu-studio
 	wget
 	git
 	tree
 	vesktop
 	zen-browser
 	kitty 
+	deezer-enhanced	
 
 	#Outils système pour Hyprland
     	waybar        # La barre d'état / dock
