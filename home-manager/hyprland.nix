@@ -135,13 +135,7 @@
           }
       }
 
-      extraConfig = ''
-      gestures {
-        workspace_swipe = true
-        workspace_swipe_fingers = 3
-      }
-      '';
-
+     
       # --- RACCOURCIS ---
       $mainMod = SUPER
 
@@ -228,6 +222,13 @@
       # --- RÈGLES FENÊTRES ---
       windowrule = suppressevent maximize, class:.*
       windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+    
+     
+      gestures {
+        workspace_swipe = true
+        workspace_swipe_fingers = 3
+      }
+
     '';
   };
 }
