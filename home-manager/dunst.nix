@@ -31,6 +31,7 @@
         progress_bar_frame_width = 1;
         progress_bar_min_width = 150;
         progress_bar_max_width = 300;
+        follow = "mouse";
       };
 
       # Niveaux d'urgence (Couleurs spécifiques)
