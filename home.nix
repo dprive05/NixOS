@@ -17,7 +17,11 @@
 
   # Tu peux laisser des paquets en vrac ici si tu veux
   home.packages = with pkgs; [
-    # fastfetch
+    #Pour faire des screen : 
+	grim          # Le photographe
+  	slurp         # Le sélecteur de zone
+  	wl-clipboard  # Le presse-papier (nécessaire pour copier l'image)
+  	swappy        # (Optionnel) Un petit éditeur pour dessiner des flèches sur tes screens
   ];
 
   programs.home-manager.enable = true;
