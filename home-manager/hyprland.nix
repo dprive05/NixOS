@@ -124,8 +124,8 @@
 
       # --- CLAVIER & SOURIS ---
       input {
-          kb_layout = us,fr
-          kb_variant = alt-intl,
+          kb_layout = "us,fr"
+          kb_variant = "alt-intl,"
           kb_model =
           kb_rules =
           follow_mouse = 1
@@ -136,7 +136,7 @@
       }
 
       gestures {
-          workspace_swipe = on
+          workspace_swipe = true
       }
 
 
@@ -154,6 +154,9 @@
       bind = $mainMod, W, exec, zen
       bind = $mainMod, Z, exec, zen
       bind = SUPER, L, exec, hyprlock
+
+      #Pour faire un screen
+      bind = SUPER SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy
 
       # Changer de langue clavier (Super + Alt Gauche)
       bind = SUPER, Alt_L, exec, hyprctl switchxkblayout all next
