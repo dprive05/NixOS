@@ -106,14 +106,8 @@
   #Pour eviter les problème de couleur d´écran
   boot.kernelParams = [ "amdgpu.abmlevel=0" ];
 
-  # Gestion de l'énergie (Nouvelle syntaxe NixOS)
-  services.logind.settings = {
-    # 1. Sur Batterie : Dodo quand on ferme
-    Login.HandleLidSwitch = "suspend";
-    
-    # 2. Sur Dock/Secteur : On ignore (pour le mode Mac)
-    Login.HandleLidSwitchExternalPower = "ignore";
-  }; 
+  # On dit à NixOS : "Ne touche à rien, laisse Hyprland gérer le capot"
+  services.logind.lidSwitch = "ignore";
 
   #Setup VirtualBox
   virtualisation.virtualbox.host.enable = true;

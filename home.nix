@@ -10,6 +10,7 @@
     ./home-manager/kitty.nix
     ./home-manager/theme.nix
     ./home-manager/dunst.nix
+    ./home-manager/clamshell.nix
   ];
 
   # Tu peux laisser des paquets en vrac ici si tu veux
