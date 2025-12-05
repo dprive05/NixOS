@@ -135,10 +135,12 @@
           }
       }
 
+      extraConfig = ''
       gestures {
-          workspace_swipe = true
+        workspace_swipe = true
+        workspace_swipe_fingers = 3
       }
-
+      '';
 
       # --- RACCOURCIS ---
       $mainMod = SUPER
