@@ -135,7 +135,7 @@
           }
       }
 
-      gesture {
+      gestures {
           workspace_swipe = on
       }
 

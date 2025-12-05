@@ -11,7 +11,7 @@
     ./home-manager/theme.nix
     ./home-manager/dunst.nix
     ./home-manager/clamshell.nix
-    ./home-manager/hyrland.nix
+    ./home-manager/hyprland.nix
     ./home-manager/security.nix
   ];
 
