@@ -9,6 +9,7 @@
     ./home-manager/zsh.nix
     ./home-manager/kitty.nix
     ./home-manager/theme.nix
+    ./home-manager/dunst.nix
   ];
 
   # Tu peux laisser des paquets en vrac ici si tu veux
