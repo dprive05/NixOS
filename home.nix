@@ -1,20 +1,21 @@
 { config, pkgs, ... }:
 
 {
-  # Tes infos utilisateur
   home.username = "raph";
   home.homeDirectory = "/home/raph";
 
-  # C'est ici qu'on mettra Zsh et Starship juste après
-  home.packages = with pkgs; [
-    # Tu pourras ajouter des petits outils ici plus tard
-    # fastfetch
-    # ripgrep
+  # C'EST ICI QUE TU CONNECTES TES FICHIERS
+  imports = [
+    ./home-manager/zsh.nix
+    ./home-manager/kitty.nix
+    
   ];
 
-  # Active Home Manager
-  programs.home-manager.enable = true;
+  # Tu peux laisser des paquets en vrac ici si tu veux
+  home.packages = with pkgs; [
+    # fastfetch
+  ];
 
-  # Ne pas toucher (version de l'état)
+  programs.home-manager.enable = true;
   home.stateVersion = "24.05";
 }
