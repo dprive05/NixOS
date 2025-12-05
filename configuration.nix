@@ -126,9 +126,16 @@
   #Active Hyprlock
   programs.hyprlock.enable = true;
 
+  programs.dconf.enable = true;
+
   #Optionnel : aide pour que les fenêtres comme Electron (Discord/VSCode) marchent bien sur Wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  # Activer le "coffre-fort" (Keyring)
+  services.gnome.gnome-keyring.enable = true;
+  
+  # Dire à SDDM de déverrouiller le coffre quand tu tapes ton mot de passe au login
+  security.pam.services.sddm.enableGnomeKeyring = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -157,6 +164,14 @@
 	nwg-displays  #Gerer les ecrans	
 	hypridle      #Gere la veille et l'inactivite	
 	swayosd	
+	glib	      #permet de setup des theme + Fournit 'gsettings'
+  	libsForQt5.qt5ct  # Pour configurer les apps Qt (VLC, etc.)
+ 	kdePackages.qt6ct
+	
+	# Thèmes & Icônes
+	catppuccin-gtk    # Le thème sombre
+	papirus-icon-theme # Les icônes
+	bibata-cursors    # Le curseur de souris
 
     	#Gestion du réseau/son en graphique 
     	networkmanagerapplet
@@ -169,6 +184,12 @@
     nerd-fonts.droid-sans-mono
   ];
 
+
+  environment.sessionVariables = {
+    # On force le curseur ici aussi pour le login manager (SDDM)
+    XCURSOR_THEME = "Bibata-Modern-Ice";
+    XCURSOR_SIZE = "24";
+  };
 	
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
