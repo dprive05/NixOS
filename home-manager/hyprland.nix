@@ -124,8 +124,8 @@
 
       # --- CLAVIER & SOURIS ---
       input {
-          kb_layout = "us,fr"
-          kb_variant = "alt-intl,"
+          kb_layout = us,fr
+          kb_variant = alt-intl,
           kb_model =
           kb_rules =
           follow_mouse = 1
