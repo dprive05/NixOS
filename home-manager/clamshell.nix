@@ -1,32 +1,41 @@
 { config, pkgs, ... }:
 
 let
-  # On crée un script "clamshell" qui sera disponible partout
   clamshell-script = pkgs.writeShellScriptBin "clamshell" ''
     #!/bin/sh
     
-    # 1. On vérifie s'il y a des écrans AUTRES que eDP-1 (le portable)
-    # On liste les moniteurs, et on enlève la ligne qui contient "eDP-1"
+    # Compte les écrans externes (Tout sauf eDP-1)
     EXTERNAL_COUNT=$(hyprctl monitors | grep "Monitor" | grep -v "eDP-1" | wc -l)
 
+    # Fonction FERMETURE
     if [ "$1" == "close" ]; then
         if [ $EXTERNAL_COUNT -gt 0 ]; then
-            # S'il reste des écrans (donc externes), on coupe juste le portable
+            # DOCK : On éteint l'écran interne
             hyprctl keyword monitor "eDP-1, disable"
         else
-            # Sinon, on dort
+            # TRAIN : On dort
             systemctl suspend
         fi
     fi
 
+    # Fonction OUVERTURE
     if [ "$1" == "open" ]; then
-        # On rallume le portable (Scale 1.25)
-        hyprctl keyword monitor "eDP-1, preferred, auto, 1.25"
+        # On rallume l'écran interne, placé en bas (0x2160) pour éviter les bugs
+        hyprctl keyword monitor "eDP-1, preferred, 0x2160, 1.25"
         hyprctl reload
+    fi
+    
+    # Fonction VÉRIFICATION AU DÉMARRAGE
+    if [ "$1" == "check" ]; then
+        # Regarde si le fichier système dit "closed"
+        if grep -q "closed" /proc/acpi/button/lid/*/state; then
+            $0 close
+        else
+            $0 open
+        fi
     fi
   '';
 in
 {
-  # On installe ce script dans tes paquets
   home.packages = [ clamshell-script ];
 }
