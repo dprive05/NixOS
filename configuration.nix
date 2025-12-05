@@ -87,6 +87,7 @@
     isNormalUser = true;
     description = "raph";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
@@ -139,6 +140,7 @@
   #Raph ne me tue pas STP pour ce qu'il y a si dessous
   # Activer Flatpak (pour Bambu Studio et autres apps propriétaires)
   services.flatpak.enable = true;
+
   
   # Indispensable pour que les Flatpaks puissent ouvrir les fenêtres "Enregistrer sous..." sur Hyprland
   xdg.portal = {
@@ -146,6 +148,8 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config.common.default = "*";
   };
+
+  programs.zsh.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
