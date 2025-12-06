@@ -38,6 +38,8 @@
         "dunst"
         "hyprpaper"
         "hypridle"
+	"wl-paste --type text --watch cliphist store" # Historique Texte
+	"wl-paste --type image --watch cliphist store" # Historique Images
       ];
 
       # --- INPUT (Clavier/Souris) ---
@@ -156,6 +158,9 @@
         "$mainMod, W, exec, zen"
         "$mainMod, Z, exec, zen"
         "SUPER, L, exec, hyprlock"
+
+	# Super + V pour voir l'historique
+	"$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
 
         # Screenshot
         "SUPER SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"

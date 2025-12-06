@@ -22,6 +22,11 @@
   	slurp         # Le sélecteur de zone
   	wl-clipboard  # Le presse-papier (nécessaire pour copier l'image)
   	swappy        # (Optionnel) Un petit éditeur pour dessiner des flèches sur tes screens
+	
+	#"Presse-Papier Infini" (Cliphist)
+	cliphist
+	wl-clip-persist
+
   ];
 
   programs.home-manager.enable = true;
