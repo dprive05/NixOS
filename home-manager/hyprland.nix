@@ -12,7 +12,7 @@
       # --- VARIABLES ---
       "$mainMod" = "SUPER";
       "$terminal" = "kitty";
-      "$fileManager" = "thunar";
+      "$fileManager" = "dolphin";
       "$menu" = "wofi --show drun";
 
       # --- ÉCRANS ---
@@ -151,7 +151,7 @@
         "$mainMod, Q, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, E, exec, $fileManager"
-        "$mainMod, V, togglefloating,"
+        "$mainMod, F, togglefloating,"
         "$mainMod, SPACE, exec, $menu"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"

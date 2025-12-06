@@ -13,7 +13,19 @@
     ./home-manager/clamshell.nix
     ./home-manager/hyprland.nix
     ./home-manager/security.nix
+    ./home-manager/wallpaper.nix
   ];
+  
+  # Définir les applications par défaut
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "image/png" = [ "imv.desktop" ];
+      "image/jpeg" = [ "imv.desktop" ];
+      "image/gif" = [ "imv.desktop" ];
+      "image/webp" = [ "imv.desktop" ];
+    };
+  };
 
   # Tu peux laisser des paquets en vrac ici si tu veux
   home.packages = with pkgs; [
@@ -21,7 +33,8 @@
 	grim          # Le photographe
   	slurp         # Le sélecteur de zone
   	wl-clipboard  # Le presse-papier (nécessaire pour copier l'image)
-  	swappy        # (Optionnel) Un petit éditeur pour dessiner des flèches sur tes screens
+    	swappy        # (Optionnel) Un petit éditeur pour dessiner des flèches sur tes screens
+   	imv  	      # Le visualiseur d'images        
 	
 	#"Presse-Papier Infini" (Cliphist)
 	cliphist
