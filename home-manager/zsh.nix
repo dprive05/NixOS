@@ -35,6 +35,8 @@
       home = "sudo nano /etc/nixos/home.nix";
       update = "sudo nix flake update && sudo nixos-rebuild switch --flake /etc/nixos/";
       
+      cl = "clear && fastfetch";
+      
       # Divers
       cat = "bat"; # Utiliser bat pour lire les fichiers
       ".." = "cd ..";
@@ -51,68 +53,69 @@
   };
 
  
-# --- STARSHIP (Style Powerlevel10k) ---
+  # --- STARSHIP (Style "Lean" avec Icônes & Heure) ---
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = false;
+      add_newline = true;
       
-      # Ligne de gauche (OS, Dossier, Git)
-      format = "$os$directory$git_branch$git_status$character";
+      # GAUCHE : Dossier -> Git -> Saut de ligne -> Flèche
+      format = "$directory$git_branch$git_status$line_break$character";
       
-      # Ligne de droite (L'heure et le temps d'exécution)
+      # DROITE : Temps d'exécution -> Heure
       right_format = "$cmd_duration$time";
 
-      # --- MODULES ---
-
-      # Le petit logo de ton OS (NixOS)
-      os = {
-        disabled = false;
-        style = "bg:#89b4fa fg:#1e1e2e";
-        symbols = {
-          NixOS = " ";
-        };
-        format = "[ $symbol ]($style)";
-      };
-
-      # Le dossier actuel (Fond bleu)
+      # --- LE DOSSIER (Avec Icônes) ---
       directory = {
-        style = "bg:#89b4fa fg:#1e1e2e";
-        format = "[ $path ]($style)[](fg:#89b4fa bg:#313244)";
+        style = "bold #89b4fa";
+        format = "[$path]($style) ";
         truncation_length = 3;
         truncation_symbol = "…/";
+        
+        substitutions = {
+          "Documents" = " ";
+          "Downloads" = " ";
+          "Music" = " ";
+          "Pictures" = " ";
+          "Videos" = " ";
+          "Desktop" = " ";
+        };
+        
+        home_symbol = " ~";
+        read_only = " 🔒";
       };
 
-      # Git (Fond gris)
+      # --- GIT ---
       git_branch = {
-        style = "bg:#313244";
-        format = "[[ $symbol $branch ](fg:#a6e3a1 bg:#313244)]($style)";
-        symbol = "";
+        style = "bold #a6e3a1"; # Vert
+        symbol = " ";
+        format = "via [$symbol$branch]($style) ";
       };
 
       git_status = {
-        style = "bg:#313244";
-        format = "[[($all_status$ahead_behind )](fg:#a6e3a1 bg:#313244)[](fg:#313244)]($style)";
+        style = "bold #fab387"; # Orange
+        format = "[$all_status$ahead_behind]($style) ";
       };
 
-      # Le curseur final
+      # --- LE PROMPT (La flèche) ---
       character = {
-        success_symbol = "[ ➜](bold green)";
-        error_symbol = "[ ✗](bold red)";
-      };
-
-      # L'heure (à droite)
-      time = {
-        disabled = false;
-        time_format = "%R"; # Format 24h (ex: 14:30)
-        style = "bg:#1e1e2e";
-        format = "[[  $time ](fg:#a6adc8 bg:#1e1e2e)]($style)";
+        success_symbol = "[❯](bold #cba6f7)"; # Violet
+        error_symbol = "[❯](bold #f38ba8)";   # Rouge
+        vimcmd_symbol = "[❮](bold #a6e3a1)";
       };
       
-      # Temps d'exécution (si une commande est lente)
+      # --- TEMPS D'EXÉCUTION ---
       cmd_duration = {
-        min_time = 500;
-        format = "[ ⏱ $duration ](fg:#f9e2af)";
+        min_time = 2000;
+        format = "took [$duration](bold #f9e2af) "; # Jaune
+      };
+
+      # --- L'HEURE (À Droite) ---
+      time = {
+        disabled = false;
+        time_format = "%R"; # Format 24h (ex: 16:30)
+        style = "bold #6c7086"; # Gris (Overlay0)
+        format = "at [$time]($style)";
       };
     };
   };
