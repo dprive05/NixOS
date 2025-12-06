@@ -257,5 +257,15 @@
   };
 
   services.blueman.enable = true;
+
+  # Nettoyage automatique
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+  
+  # Optimisation du stockage (déduplication)
+  nix.settings.auto-optimise-store = true;
  
 }
