@@ -50,32 +50,69 @@
     # Maintenant tu peux taper 'z dos' pour aller dans 'Documents'
   };
 
-  # 4. Configurer Starship (Le Prompt)
+ 
+# --- STARSHIP (Style Powerlevel10k) ---
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = true;
-      format = "$directory$git_branch$nix_shell$character";
+      add_newline = false;
       
-      # Style des dossiers
+      # Ligne de gauche (OS, Dossier, Git)
+      format = "$os$directory$git_branch$git_status$character";
+      
+      # Ligne de droite (L'heure et le temps d'exécution)
+      right_format = "$cmd_duration$time";
+
+      # --- MODULES ---
+
+      # Le petit logo de ton OS (NixOS)
+      os = {
+        disabled = false;
+        style = "bg:#89b4fa fg:#1e1e2e";
+        symbols = {
+          NixOS = " ";
+        };
+        format = "[ $symbol ]($style)";
+      };
+
+      # Le dossier actuel (Fond bleu)
       directory = {
-        style = "bold lavender";
+        style = "bg:#89b4fa fg:#1e1e2e";
+        format = "[ $path ]($style)[](fg:#89b4fa bg:#313244)";
         truncation_length = 3;
         truncation_symbol = "…/";
       };
-      
-      # Symbole de la flèche
+
+      # Git (Fond gris)
+      git_branch = {
+        style = "bg:#313244";
+        format = "[[ $symbol $branch ](fg:#a6e3a1 bg:#313244)]($style)";
+        symbol = "";
+      };
+
+      git_status = {
+        style = "bg:#313244";
+        format = "[[($all_status$ahead_behind )](fg:#a6e3a1 bg:#313244)[](fg:#313244)]($style)";
+      };
+
+      # Le curseur final
       character = {
-        success_symbol = "[➜](bold green)";
-        error_symbol = "[➜](bold red)";
-        vimcmd_symbol = "[V](bold green)";
+        success_symbol = "[ ➜](bold green)";
+        error_symbol = "[ ✗](bold red)";
+      };
+
+      # L'heure (à droite)
+      time = {
+        disabled = false;
+        time_format = "%R"; # Format 24h (ex: 14:30)
+        style = "bg:#1e1e2e";
+        format = "[[  $time ](fg:#a6adc8 bg:#1e1e2e)]($style)";
       };
       
-      # Git
-      git_branch = {
-        style = "bold pink";
-        symbol = " ";
+      # Temps d'exécution (si une commande est lente)
+      cmd_duration = {
+        min_time = 500;
+        format = "[ ⏱ $duration ](fg:#f9e2af)";
       };
     };
   };
-}
