@@ -64,15 +64,15 @@
         after_sleep_cmd = hyprctl dispatch dpms on
     }
 
-    listener {
-        timeout = 300
-        on-timeout = loginctl lock-session
-    }
+#    listener {
+#        timeout = 30000000000000000000000000000000000000000000000000000000000000000
+#        on-timeout = loginctl lock-session
+#    }
 
-    listener {
-        timeout = 600
-        on-timeout = hyprctl dispatch dpms off
-        on-resume = hyprctl dispatch dpms on
-    }
+#    listener {
+#        timeout = 6000000000000000000000000000000000000000000000000000000000000000
+#        on-timeout = hyprctl dispatch dpms off
+#        on-resume = hyprctl dispatch dpms on
+#     }
   '';
 }
