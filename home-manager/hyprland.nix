@@ -21,7 +21,11 @@
         "DP-10, preferred, 1920x0, 1, transform, 1"
         "eDP-1, preferred, 0x2160, 1.25"
       ];
-
+	
+      xwayland = {
+ 	 force_zero_scaling = true;
+      };
+      
       # --- ENVIRONNEMENT ---
       env = [
         "XCURSOR_SIZE,24"
