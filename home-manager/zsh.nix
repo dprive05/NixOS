@@ -33,7 +33,7 @@
       rebuild = "sudo nixos-rebuild switch --flake /etc/nixos/#nixos";
       conf = "sudo nano /etc/nixos/configuration.nix";
       home = "sudo nano /etc/nixos/home.nix";
-      update = "sudo nix flake update && sudo nixos-rebuild switch --flake /etc/nixos/";
+      update = "sudo cd /etc/nixos/ && sudo flatpak update -y && sudo nix flake update && sudo nixos-rebuild switch --flake /etc/nixos/";
       
       cl = "clear && fastfetch";
       

@@ -44,19 +44,20 @@
 
   ];
   
-  # --- CONFIGURATION PERMANENTE BAMBU STUDIO (FLATPAK) ---
+  # --- CONFIGURATION STABLE BAMBU STUDIO ---
   home.file.".local/share/flatpak/overrides/com.bambulab.BambuStudio".text = ''
     [Context]
-    # Donne accès aux thèmes pour qu'il soit sombre (Catppuccin)
-    filesystems=~/.themes;~/.icons;xdg-config/gtk-3.0:ro;
+    # On donne accès aux thèmes pour éviter les erreurs de style
+    filesystems=xdg-config/gtk-3.0:ro;
 
     [Environment]
-    # Règle le problème de flou (Netteté parfaite)
+    # FORCE le mode X11 pour éviter les erreurs de taille Wayland
+    GDK_BACKEND=x11
+    # On reste sur une échelle de 1 pour éviter le flou et les erreurs "height > 0"
     GDK_SCALE=1
-    
-    # Règle la taille du texte (Si c'est trop petit, mets 1.2 ou 1.5 ici)
+    # On grossit juste le texte pour tes yeux
     GDK_DPI_SCALE=1.25
-    '';
+  '';
 
   programs.home-manager.enable = true;
   home.stateVersion = "24.05";
