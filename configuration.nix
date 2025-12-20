@@ -168,6 +168,7 @@
 	zen-browser
 	kitty 
 	deezer-enhanced	
+	
 
 	#Outils système pour Hyprland
     	waybar        # La barre d'état / dock
@@ -195,6 +196,14 @@
     	pavucontrol   # Contrôle du volume audio
 	blueman	      #service de bluetooth
   ];
+
+  
+  #ATTENTION LA LISTE CI DESSOUS SONT DES LOGICIEL QUI PEUVENT ETRE MAUVAIS 
+  nixpkgs.config.permittedInsecurePackages = [
+    "packettracer8"
+    # Parfois, il demande aussi une version spécifique de bibliothèques comme 'openssl-1.1.1w'
+  ];
+
 
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code

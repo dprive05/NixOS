@@ -8,7 +8,7 @@
   xdg.configFile."hypr/hyprlock.conf".text = ''
     background {
         monitor =
-        path = /home/raph/Pictures/wallpaper.jpg   # <--- Vérifie que ton image est toujours là !
+        path = /etc/nixos/home-manager/wallpaper.jpg   # <--- Vérifie que ton image est toujours là !
         blur_passes = 2
         blur_size = 4
     }
