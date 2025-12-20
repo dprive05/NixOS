@@ -168,7 +168,7 @@
 	zen-browser
 	kitty 
 	deezer-enhanced	
-	
+	ciscoPacketTracer8
 
 	#Outils système pour Hyprland
     	waybar        # La barre d'état / dock
@@ -200,7 +200,7 @@
   
   #ATTENTION LA LISTE CI DESSOUS SONT DES LOGICIEL QUI PEUVENT ETRE MAUVAIS 
   nixpkgs.config.permittedInsecurePackages = [
-    "packettracer8"
+    "ciscoPacketTracer8-8.2.2"
     # Parfois, il demande aussi une version spécifique de bibliothèques comme 'openssl-1.1.1w'
   ];
 
