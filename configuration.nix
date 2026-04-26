@@ -150,7 +150,8 @@
   environment.systemPackages = with pkgs; [
     vim
     git
-    microsoft-edge
+    tree
+    wget
   ];
 
   services.desktopManager.plasma6.enable = true;
