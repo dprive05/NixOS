@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  zen-browser,
   ...
 }:
 
@@ -125,7 +124,6 @@
       eza
       kitty
       home-manager
-      zen-browser
     ];
   };
 
