@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  zen-browser,
   ...
 }:
 
@@ -11,23 +12,22 @@
   ];
 
   boot.loader = {
-	  systemd-boot.enable = true;
-	  efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
   };
 
   networking = {
-		  hostName = "raph-framework";
-		  networkmanager = {
-				  enable = true;
-				  wifi = {
-						  powersave = false;
-						  macAddress = "preserve";
-				  };
-		  };
+    hostName = "raph-framework";
+    networkmanager = {
+      enable = true;
+      wifi = {
+        powersave = false;
+        macAddress = "preserve";
+      };
+    };
   };
 
   time.timeZone = "Europe/Paris";
-
 
   documentation = {
     enable = true;
@@ -69,67 +69,65 @@
   };
 
   services = {
-	gnome.gnome-keyring.enable = true;
-	seatd.enable = true;
-	blueman.enable = true;
-	fprintd = {
-	  enable = true;
-	  package = pkgs.fprintd-tod;
-	  tod = {
-		enable = true;
-		driver = pkgs.libfprint-2-tod1-goodix;
-	  };
-	};
-	greetd = {
-	  enable = true;
-	  settings = {
-		default_session = {
-		  command = "${pkgs.tuigreet}/bin/tuigreet --remember --user-menu --remember-user-session --time";
-		};
-	  };
-	  useTextGreeter = true;
-	};
-	dbus.enable = true;
-	pipewire = {
-	  enable = true;
-	  alsa.enable = true;
-	  alsa.support32Bit = true;
-	  pulse.enable = true;
-	  jack.enable = true;
-	};
-	udev = {
-	  packages = with pkgs; [
-		libfprint-2-tod1-goodix
-	  ];
-	  extraRules = ''
-		SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5740", MODE="0666"
-		'';
-	};
+    gnome.gnome-keyring.enable = true;
+    seatd.enable = true;
+    blueman.enable = true;
+    fprintd = {
+      enable = true;
+      package = pkgs.fprintd-tod;
+      tod = {
+        enable = true;
+        driver = pkgs.libfprint-2-tod1-goodix;
+      };
+    };
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --remember --user-menu --remember-user-session --time";
+        };
+      };
+      useTextGreeter = true;
+    };
+    dbus.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
+    udev = {
+      packages = with pkgs; [
+        libfprint-2-tod1-goodix
+      ];
+      extraRules = ''
+        		SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5740", MODE="0666"
+        		'';
+    };
   };
 
   virtualisation.docker.enable = true;
 
   xdg.portal = {
-	enable = true;
-	extraPortals = [
-	  pkgs.xdg-desktop-portal-hyprland
-		pkgs.xdg-desktop-portal-gtk
-	];
-	config.common.default = "*";
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config.common.default = "*";
   };
-
-
 
   users.users.raph = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-		eza
-		kitty
-		home-manager
+      eza
+      kitty
+      home-manager
+      zen-browser
     ];
   };
-
 
   hardware = {
     enableRedistributableFirmware = true;
@@ -141,14 +139,14 @@
   };
 
   programs = {
-	firefox.enable = true;
-	thunar.enable = true;
-	hyprland = {
-	  enable = true;
-	  xwayland.enable = true;
-	};
+    firefox.enable = true;
+    thunar.enable = true;
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
   };
-  
+
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -157,14 +155,12 @@
     microsoft-edge
   ];
 
-  
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
   };
   services.xserver.enable = true;
-
 
   system.stateVersion = "25.11";
 }
