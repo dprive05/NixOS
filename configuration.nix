@@ -107,6 +107,8 @@
   };
 
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
 
   xdg.portal = {
     enable = true;
@@ -119,7 +121,7 @@
 
   users.users.raph = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel, vboxusers" ];
     packages = with pkgs; [
       eza
       kitty
