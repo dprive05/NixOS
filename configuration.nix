@@ -27,6 +27,7 @@
   };
 
   time.timeZone = "Europe/Paris";
+  i18n.defaultLocale = "fr_FR.UTF-8";
 
   documentation = {
     enable = true;
@@ -110,6 +111,17 @@
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
 
+  fonts.packages = with pkgs; [
+  nerd-fonts.jetbrains-mono
+  nerd-fonts.symbols-only
+  nerd-fonts.fira-code
+  font-awesome
+  noto-fonts
+  noto-fonts-color-emoji
+  papirus-icon-theme
+  ];
+
+
   xdg.portal = {
     enable = true;
     extraPortals = [
@@ -121,7 +133,7 @@
 
   users.users.raph = {
     isNormalUser = true;
-    extraGroups = [ "wheel, vboxusers" ];
+    extraGroups = [ "sudo" "wheel, vboxusers" ];
     packages = with pkgs; [
       eza
       kitty
