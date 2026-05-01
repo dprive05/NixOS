@@ -139,6 +139,7 @@
 	"wheel"
 	"vboxusers" 
 	"networkmanager"
+	"docker"
     ];
     packages = with pkgs; [
       eza
