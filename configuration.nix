@@ -69,6 +69,7 @@
   };
 
   services = {
+    flatpak.enable = true;
     gnome.gnome-keyring.enable = true;
     seatd.enable = true;
     blueman.enable = true;
@@ -133,7 +134,12 @@
 
   users.users.raph = {
     isNormalUser = true;
-    extraGroups = [ "sudo" "wheel, vboxusers" ];
+    extraGroups = [ 
+	"sudo"
+	"wheel"
+	"vboxusers" 
+	"networkmanager"
+    ];
     packages = with pkgs; [
       eza
       kitty
