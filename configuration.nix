@@ -146,6 +146,7 @@
       kitty
       home-manager
     ];
+    shell = pkgs.zsh;
   };
 
   hardware = {
@@ -164,6 +165,7 @@
       enable = true;
       xwayland.enable = true;
     };
+    zsh.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -174,7 +176,8 @@
     tree
     wget
   ];
-
+  
+ 
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
     enable = true;
