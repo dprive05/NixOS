@@ -16,7 +16,7 @@
       nixosConfigurations.raph-framework = nixpkgs.lib.nixosSystem {
         modules = [
           ./configuration.nix
-	  nixos-hardware.nixosModules.framework-16-7040-amd
+          nixos-hardware.nixosModules.framework-16-7040-amd
         ];
         specialArgs = {
           inherit inputs;
