@@ -69,6 +69,12 @@
   };
 
   services = {
+    xserver.enable = true;
+    desktopManager.plasma6.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
     flatpak.enable = true;
     gnome.gnome-keyring.enable = true;
     seatd.enable = true;
@@ -103,43 +109,46 @@
         libfprint-2-tod1-goodix
       ];
       extraRules = ''
-        		SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5740", MODE="0666"
-        		'';
+        SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5740", MODE="0666"
+      '';
     };
   };
 
-  virtualisation.docker.enable = true;
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation = {
+    docker.enable = true;
+    virtualbox.host = {
+      enable = true;
+      enableExtensionPack = true;
+    };
+  };
 
   fonts.packages = with pkgs; [
-  nerd-fonts.jetbrains-mono
-  nerd-fonts.symbols-only
-  nerd-fonts.fira-code
-  font-awesome
-  noto-fonts
-  noto-fonts-color-emoji
-  papirus-icon-theme
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
+    nerd-fonts.fira-code
+    font-awesome
+    noto-fonts
+    noto-fonts-color-emoji
+    papirus-icon-theme
   ];
-
 
   xdg.portal = {
     enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
     ];
     config.common.default = "*";
   };
 
   users.users.raph = {
     isNormalUser = true;
-    extraGroups = [ 
-	"sudo"
-	"wheel"
-	"vboxusers" 
-	"networkmanager"
-	"docker"
+    extraGroups = [
+      "sudo"
+      "wheel"
+      "vboxusers"
+      "networkmanager"
+      "docker"
     ];
     packages = with pkgs; [
       eza
@@ -160,6 +169,15 @@
 
   programs = {
     firefox.enable = true;
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+      extraCompatPackages = with pkgs; [
+        protonup-ng
+        proton-ge-bin
+      ];
+    };
+    gamemode.enable = true;
     thunar.enable = true;
     hyprland = {
       enable = true;
@@ -175,15 +193,11 @@
     git
     tree
     wget
+    gamescope
+    wine-staging
+    dxvk
+    vkd3d
   ];
-  
- 
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-  services.xserver.enable = true;
 
   system.stateVersion = "25.11";
 }
