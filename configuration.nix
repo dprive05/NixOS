@@ -112,7 +112,10 @@
         SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5740", MODE="0666"
       '';
     };
+    rpcbind.enable = true;
   };
+
+  boot.supportedFilesystems = [ "nfs" ];
 
   virtualisation = {
     docker.enable = true;
@@ -184,6 +187,13 @@
       xwayland.enable = true;
     };
     zsh.enable = true;
+    appimage = {
+      enable = true;
+      binfmt = true;
+      package = pkgs.appimage-run.override {
+      extraPkgs = pkgs: [ pkgs.webkitgtk_4_1 pkgs.glib-networking ];
+      };
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -197,7 +207,8 @@
     wine-staging
     dxvk
     vkd3d
+    wireguard-tools
   ];
-
+ 
   system.stateVersion = "25.11";
 }
