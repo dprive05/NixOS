@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -16,7 +17,7 @@
   };
 
   networking = {
-    hostName = "raph-framework";
+    hostName = "framework";
     networkmanager = {
       enable = true;
       wifi = {
@@ -184,6 +185,7 @@
     thunar.enable = true;
     hyprland = {
       enable = true;
+      withUWSM = true;
       xwayland.enable = true;
     };
     zsh.enable = true;
