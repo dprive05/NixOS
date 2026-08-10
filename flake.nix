@@ -20,6 +20,7 @@
         hyprland.follows = "hyprland";
         zen-browser.follows = "zen-browser";
         catppuccin.follows = "catppuccin";
+        nixvim.follows = "nixvim";
       };
     };
 
@@ -40,13 +41,21 @@
         home-manager.follows = "home-manager";
       };
     };
+    
+    nixvim = {
+      url = "github:EniumRaphael/nixvim";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
 
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
+  
 
   outputs =
     {
@@ -59,6 +68,7 @@
       zen-browser,
       hyprland,
       catppuccin,
+      nixvim, 
       ...
     }@inputs:
 
@@ -88,6 +98,7 @@
         let
           hmPackages = {
             zen-browser = inputs.zen-browser.packages.${sys}.default;
+            nixvim = nixvim.packages.${sys}.default;
           };
         in
         nixpkgs.lib.nixosSystem {
