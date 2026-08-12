@@ -41,7 +41,7 @@
         home-manager.follows = "home-manager";
       };
     };
-    
+
     nixvim = {
       url = "github:EniumRaphael/nixvim";
       inputs = {
@@ -55,7 +55,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  
 
   outputs =
     {
@@ -68,7 +67,7 @@
       zen-browser,
       hyprland,
       catppuccin,
-      nixvim, 
+      nixvim,
       ...
     }@inputs:
 
@@ -117,7 +116,7 @@
           ++ extraModules;
           specialArgs = { inherit inputs nixName; };
         };
-in
+    in
     {
       nixosConfigurations = {
         "framework" = mkHost {
