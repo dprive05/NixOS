@@ -54,7 +54,7 @@
   };
 
   games = {
-    steam = true;
+    steam = false;
   };
 
   system.stateVersion = "25.11";
