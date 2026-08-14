@@ -86,14 +86,5 @@ in
       pam.services.swaylock = { };
       polkit.enable = true;
     };
-    fonts.packages = with pkgs; [
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.symbols-only
-      nerd-fonts.fira-code
-      font-awesome
-      noto-fonts
-      noto-fonts-color-emoji
-      papirus-icon-theme
-    ];
   };
 }
