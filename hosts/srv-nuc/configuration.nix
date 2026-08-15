@@ -15,6 +15,7 @@
     ../../modules/hardware/default.nix
     ../../modules/users/default.nix
     ../../modules/applications/default.nix
+    ../../selfhost/default.nix
   ];
 
   networking = {
@@ -63,6 +64,10 @@
 
   games = {
     steam = false;
+  };
+
+  selfhost = {
+    htop = true;
   };
 
   system.stateVersion = "25.11";
