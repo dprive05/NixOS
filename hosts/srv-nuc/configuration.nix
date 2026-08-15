@@ -25,6 +25,15 @@
         prefixLength = 24;
       }
     ];
+    vlans = {
+      vlan20 = { id=20; interface="enp1s0"; }; #Prod Vlan
+    };
+    interfaces.vlan20.ipv4.addresses = [
+      {
+      address = "10.0.20.4";
+      prefixLength = 24;
+      }
+    ];
   };
 
   config-hw = {
