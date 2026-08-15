@@ -7,7 +7,7 @@
 
 let
   cfg = config.applications.ssh;
-  sshKeyFramework = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJGE3kigemZV3zeDgEbgKdnF5XVOx2t7dILLiJ1piXzs raph@raph-framework";
+  sshKeyFramework ="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+94jQUGWbqrlRL/OBlurEbs5ttgu+3V0fadvM6WAIi raph@framework";
   sshKeyMac = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2wcAfGuJ9zXIhQANVrM7s48pbQQWwaUqPwqUuds2Lr raph@MacBookPro.lan";
   #ajouter la clé ssh des servers 1, 2, 3
 in
