@@ -19,9 +19,9 @@
 
   networking = {
     hostName = "srv-nuc";
-    interfaces.ens18.ipv4.addresses = [
+    interfaces.enp1s0.ipv4.addresses = [
       {
-        address = "10.0.10.10";
+        address = "10.0.10.4";
         prefixLength = 24;
       }
     ];
@@ -49,7 +49,7 @@
     virtualbox = false;
     wireguard = false;
     man = true;
-    ssh = false;
+    ssh = true;
   };
 
   games = {
