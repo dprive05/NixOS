@@ -20,8 +20,11 @@ in
       nginx = {
         enable = true;
         virtualHosts."htop.dprive.fr" = {
+          enableACME = true;
+          forceSSL = true;
           locations."/" = {
-            proxyPass = "http://10.0.10.4:61208";
+            proxyPass = "http://127.0.0.1:61208";
+            proxyWebsockets = true;
           };
         };
       };
