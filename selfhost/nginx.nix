@@ -6,7 +6,7 @@
 }:
 
 let
-  cfg = config.config-sec.nginx;
+  cfg = config.selfhost.nginx;
 in
 {
   config = lib.mkIf cfg {
@@ -35,9 +35,6 @@ in
     security.acme = {
       acceptTerms = true;
       defaults.email = "no-reply@dprive.fr";
-      certs = {
-        "dprive.fr" = { };
-      };
     };
 
     security.apparmor.policies.nginx = {
