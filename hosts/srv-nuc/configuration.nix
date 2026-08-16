@@ -68,6 +68,7 @@
 
   selfhost = {
     htop = true;
+    nginx = true;
   };
 
   system.stateVersion = "25.11";
