@@ -15,12 +15,21 @@ let
     lib
     ;
   };
+  nginx = import ./nginx.nix {
+    inherit
+    inputs
+    config
+    pkgs
+    lib
+    ;
+  };
   cfg = config.selfhost;
 
 in
 {
   imports = [
     htop
+    nginx
   ];
 
   options.selfhost = {
@@ -28,6 +37,11 @@ in
       type = lib.types.bool;
       default = false;
       description = "Enable the htop";
+    };
+    nginx = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable the nginx";
     };
   };
 }
